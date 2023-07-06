@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+
+  web:
+    container_name: test_project
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./media/:/media
+      - ./static/:/static
+      - ./:/app
+    entrypoint: ./wsgi-entrypoint.sh
+    networks:
+      - my_network
+
+
+volumes:
+  media:
+  static:
+
+networks:
+  my_network:
